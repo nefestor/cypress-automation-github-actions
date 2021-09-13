@@ -4,6 +4,9 @@
     "type": "git",
     "url": "https://github.com/nefestor/deel-automation.git"
   },
+  "scripts": {
+    "test:ci:record": "run-p --race start:ci e2e:record"
+  },
   "author": "Tiago Coelho",
   "dependencies": {
     "cypress": "8.3.1"
