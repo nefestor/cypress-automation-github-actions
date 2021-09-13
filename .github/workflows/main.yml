@@ -28,7 +28,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Dependencies
         run: |
-          sudo npm ci
           sudo npm install cypress
           
       - name: Run Cypress Test Suite
