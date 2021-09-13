@@ -32,4 +32,4 @@ jobs:
           
       - name: Run Cypress Test Suite
         run: |
-          npm run Cypress run --ci-build-id travis --parallel --key a711b75c-da91-47a0-bf84-11e28c1c5b5b
+          CYPRESS_password=Teste12345! npx cypress run --record --key a711b75c-da91-47a0-bf84-11e28c1c5b5b --ci-build-id travis --parallel
