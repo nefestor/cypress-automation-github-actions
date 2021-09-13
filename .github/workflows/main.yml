@@ -104,7 +104,7 @@ jobs:
       - name: Cypress tests
         run: |
           npm start &
-          npx cypress run --record --parallel --group "Parallel 2x"
+          npx cypress run --record --parallel --group "Parallel 3x"
         env:
           # place your secret record key at
           # https://github.com/cypress-io/cypress-example-kitchensink/settings/secrets
@@ -165,7 +165,68 @@ jobs:
       - name: Cypress tests
         run: |
           npm start &
-          npx cypress run --record --parallel --group "Parallel 2x"
+          npx cypress run --record --parallel --group "Parallel 3x"
+        env:
+          # place your secret record key at
+          # https://github.com/cypress-io/cypress-example-kitchensink/settings/secrets
+          CYPRESS_RECORD_KEY: ${{ secrets.dashboardRecordKey }}
+          TERM: xterm
+
+      # Save videos and screenshots as test artifacts
+      # https://github.com/actions/upload-artifact
+      - uses: actions/upload-artifact@master
+        # there might be no screenshots created when:
+        # - there are no test failures
+        # so only upload screenshots if previous step has failed
+        if: failure()
+        with:
+          name: screenshots
+          path: cypress/screenshots
+      # video should always be generated
+      - uses: actions/upload-artifact@master
+        with:
+          name: videos
+          path: cypress/videos
+
+  test3:
+    name: Cypress test 3
+    runs-on: ubuntu-18.04
+    needs: install
+    steps:
+      - uses: actions/checkout@master
+
+      # install a specific version of Node using
+      # https://github.com/actions/setup-node
+      - name: Use Node.js v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      # Restore just local node_modules and the Cypress binary archives.
+      - name: Cache Cypress binary
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ github.ref }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-cypress-${{ github.ref }}-
+      - name: Cache local node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+      # check the restored Cypress binary
+      - name: Check binary
+        run: |
+          npx cypress cache path
+          npx cypress cache list
+      # Starts local server, then runs Cypress tests and records results on the dashboard
+      - name: Cypress tests
+        run: |
+          npm start &
+          npx cypress run --record --parallel --group "Parallel 3x"
         env:
           # place your secret record key at
           # https://github.com/cypress-io/cypress-example-kitchensink/settings/secrets
