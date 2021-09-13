@@ -1,0 +1,12 @@
+{
+  "name": "dell-automation",
+  "version": "1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nefestor/deel-automation.git"
+  },
+  "author": "Tiago Coelho",
+  "dependencies": {
+    "cypress": "8.3.1"
+  }
+}
