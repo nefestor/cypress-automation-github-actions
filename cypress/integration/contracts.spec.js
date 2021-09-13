@@ -8,7 +8,7 @@ import ContractsCreation from "../support/pages/contracts/contracts-creation";
 
 const apiUrl = Cypress.env('apiUrl');
 
-context("ContractsCreation Tests", () => {
+context.skip("ContractsCreation Tests", () => {
     beforeEach(() => {
         cy.clearLocalStorage();
         cy.clearCookies();
