@@ -28,7 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Dependencies
         run: |
-          sudo npm install cypress
+          sudo npm install --unsafe-perm=true --allow-root cypress
           
       - name: Run Cypress Test Suite
         run: |
