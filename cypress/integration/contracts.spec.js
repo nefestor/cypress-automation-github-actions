@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import data from "../fixtures/Contracts.json"
+import data from "../fixtures/contracts.json"
 import Login from "../support/pages/login/login";
 import Dashboard from "../support/pages/dashboard/dashboard";
 import Contracts from "../support/pages/contracts/contracts";
