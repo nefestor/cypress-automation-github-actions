@@ -1,6 +1,6 @@
 # Deel QA Automation Exam
 
-![workflow](https://github.com/nefestor/deel-automation/actions/workflows/main.yml/badge.svg)
+[![Cypress parallel tests](https://github.com/nefestor/deel-automation/actions/workflows/main.yml/badge.svg)](https://github.com/nefestor/deel-automation/actions/workflows/main.yml)
 
 ## Tests Results
 
