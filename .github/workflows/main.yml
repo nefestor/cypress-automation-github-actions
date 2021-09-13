@@ -28,8 +28,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Dependencies
         run: |
-          sudo npm install --unsafe-perm=true --allow-root cypress
+          sudo npm install --unsafe-perm=true --allow-root cypress CYPRESS_CACHE_FOLDER=cache/Cypress
           
       - name: Run Cypress Test Suite
         run: |
-          CYPRESS_password=Teste12345! npx cypress run --record --key a711b75c-da91-47a0-bf84-11e28c1c5b5b --ci-build-id travis --parallel
+          CYPRESS_password=Teste12345! CYPRESS_CACHE_FOLDER=./node_modules/cypress/cache/Cypress npx cypress run --record --key a711b75c-da91-47a0-bf84-11e28c1c5b5b --ci-build-id travis --parallel
