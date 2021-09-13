@@ -5,11 +5,14 @@
     "url": "https://github.com/nefestor/deel-automation.git"
   },
   "scripts": {
+    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
+    "e2e:record": "cypress run --record",
     "test:ci:record": "run-p --race start:ci e2e:record"
   },
   "author": "Tiago Coelho",
   "dependencies": {
     "npm-run-all": "^4.1.2",
-    "cypress": "8.3.1"
+    "cypress": "8.3.1",
+    "serve": "11.3.0"
   }
 }
