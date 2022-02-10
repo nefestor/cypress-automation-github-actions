@@ -20,11 +20,11 @@ context("ContractsCreation Tests", () => {
         //creating contract
         Dashboard.openCreateContractPage();
         Contracts.openContract('Fixed Rate');
-        ContractsCreation.GeneralInfo(data.contractName, data.jobTitle, data.seniorityLevel, data.scopeOfWork);
+        ContractsCreation.GeneralInfo(data.contractName, data.taxResidence, data.provinceResidence, data.jobTitle, data.seniorityLevel, data.scopeOfWork);
         ContractsCreation.PaymentDetails(data.rate, data.currency, data.cycle, null, null);
         ContractsCreation.DefineDates();
         ContractsCreation.Extras(data.specialClause);
-        ContractsCreation.Compliance(data.taxResidence, data.provinceResidence);
+        ContractsCreation.Compliance();
         //assertions
         cy.intercept('POST', `${apiUrl}/contracts`).as('contract');
         cy.wait('@contract').then((contract) => {

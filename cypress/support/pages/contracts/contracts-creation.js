@@ -10,10 +10,10 @@ class ContractsCreationPage {
     alternativeNextButton = 'next';
     rateInput = 'input[name=rate]';
     currencyInput = '[data-qa=currency-select]';
-    cycleSelect = '[data-qa=cycle-select]';
+    cycleSelect = '[data-qa=cycle-select] .deel-ui__select__input-container';
     specialClauseButton = '[data-qa=special-clause-card] button';
     specialClauseTextarea = '[data-qa=special-clause-card] textarea';
-    contractorTaxResidenceDropdown = '[data-qa=contractor-tax-residence]';
+    contractorTaxResidenceDropdown = '[data-qa=contractor-tax-residence] .deel-ui__select__input-container';
     contractorTaxResidenceProvinceDropdown = '[data-qa=contractor-tax-residence-province]';
     createContractButton = 'create contract';
     contractTitle = 'h1';
@@ -24,18 +24,16 @@ class ContractsCreationPage {
         cy.visit("/create/fixed");
     }
     
-    GeneralInfo(name, jobTitle, seniority, scopeOfWork) {
+    GeneralInfo(name, taxResidence, taxProvince, jobTitle, seniority, scopeOfWork) {
         if(name) cy.get(this.contractNameInput).type(name);
+        if(taxResidence) cy.get(this.contractorTaxResidenceDropdown).type(taxResidence);
+        if(taxProvince) cy.get(this.contractorTaxResidenceProvinceDropdown).type(taxProvince);
         if(jobTitle) {
             cy.get(this.jobTitleInput).type(jobTitle);
             cy.get(this.firstJobSuggestion).click();
         }
         if(seniority) cy.get(this.seniorityDropdown).type(seniority);
         if(scopeOfWork) cy.get(this.scopeOfWorkInput).type(scopeOfWork);
-        cy.get(this.startDateCalendar).click().then(() => {
-            var today = new Date().getDate();
-            cy.contains(today - 1).click();
-        });
         cy.contains(this.alternativeNextButton).click();
     }
 
@@ -60,9 +58,7 @@ class ContractsCreationPage {
         cy.contains(this.alternativeNextButton).click();
     }
 
-    Compliance(taxResidence, provinceResidence) {
-        if(taxResidence) cy.get(this.contractorTaxResidenceDropdown).type(taxResidence);
-        if(provinceResidence) cy.get(this.contractorTaxResidenceProvinceDropdown).type(provinceResidence);
+    Compliance() {
         cy.contains(this.createContractButton).click();
     }
 }

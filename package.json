@@ -11,8 +11,8 @@
   },
   "author": "Tiago Coelho",
   "dependencies": {
+    "cypress": "^9.4.1",
     "npm-run-all": "^4.1.2",
-    "cypress": "8.3.1",
     "serve": "11.3.0"
   }
 }

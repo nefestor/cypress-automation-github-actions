@@ -1,11 +1,11 @@
 {
     "contractName": "Random Contract",
-    "jobTitle": "QA Engineer{Enter}",
+    "jobTitle": "Software QA Engineer{Enter}",
     "seniorityLevel": "Mid{Enter}",
     "scopeOfWork": "Software Testing",
     "rate": 1000, 
     "currency": "GBP - British Pound{Enter}", 
-    "cycle": "Week{Enter}",
+    "cycle": "Weekly{Enter}",
     "specialClause": "Special Clause Test",
     "taxResidence": "United States{Enter}",
     "provinceResidence": "Colorado{Enter}",
